@@ -4,7 +4,7 @@ import './App.css';
 import reducer, {initialState} from '../reducers';
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
-import {applyNumber} from '../actions'
+import {applyNumber, changeOperation} from '../actions'
 
 
 
@@ -15,6 +15,10 @@ function App() {
 
   const handleNumberClick = (number) => {
     dispatch(applyNumber(number))
+  }
+
+  const handleOperationClick = (operator) => {
+    dispatch(changeOperation(operator)); 
   }
 
 
@@ -59,9 +63,9 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"}/>
-              <CalcButton value={"*"}/>
-              <CalcButton value={"-"}/>
+              <CalcButton value={"+"} onClick = {() => handleOperationClick("+")}/>
+              <CalcButton value={"*"} onClick = {() => handleOperationClick("*")}/>
+              <CalcButton value={"-"} onClick = {() => handleOperationClick("-")}/>
             </div>
 
             <div className="row ce_button">
